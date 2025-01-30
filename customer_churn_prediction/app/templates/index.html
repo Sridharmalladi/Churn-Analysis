@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Churn Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-8">Customer Churn Prediction</h1>
+        
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <form id="prediction-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Account Age (days)</label>
+                    <input type="number" name="account_age" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Purchase Frequency (per month)</label>
+                    <input type="number" step="0.1" name="purchase_frequency" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Average Transaction Value ($)</label>
+                    <input type="number" step="0.01" name="avg_transaction_value" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Support Tickets</label>
+                    <input type="number" name="support_tickets" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+                </div>
+                
+                <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+                    Predict Churn
+                </button>
+            </form>
+            
+            <div id="result" class="mt-6 hidden">
+                <h2 class="text-xl font-semibold mb-2">Prediction Result</h2>
+                <div id="prediction-output" class="p-4 rounded-md"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('prediction-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+                
+                const result = await response.json();
+                
+                const resultDiv = document.getElementById('result');
+                const outputDiv = document.getElementById('prediction-output');
+                
+                resultDiv.classList.remove('hidden');
+                
+                if (result.prediction) {
+                    outputDiv.className = 'p-4 rounded-md bg-red-100 text-red-700';
+                    outputDiv.textContent = `High risk of churn! Probability: ${(result.churn_probability * 100).toFixed(1)}%`;
+                } else {
+                    outputDiv.className = 'p-4 rounded-md bg-green-100 text-green-700';
+                    outputDiv.textContent = `Low risk of churn. Probability: ${(result.churn_probability * 100).toFixed(1)}%`;
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while making the prediction.');
+            }
+        });
+    </script>
+</body>
+</html>

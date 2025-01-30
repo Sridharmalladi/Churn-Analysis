@@ -1,0 +1,38 @@
+# Data Processing & Analysis
+numpy==1.24.3
+pandas==2.0.2
+scikit-learn==1.2.2
+
+# Machine Learning
+xgboost==1.7.5
+lightgbm==3.3.5
+catboost==1.2
+
+# Data Visualization
+matplotlib==3.7.1
+seaborn==0.12.2
+plotly==5.15.0
+
+# Jupyter Notebooks
+jupyter==1.0.0
+ipykernel==6.23.1
+
+# Web Framework
+flask==2.3.2
+gunicorn==20.1.0
+
+# Testing & Code Quality
+pytest==7.3.1
+pylint==2.17.3
+black==23.3.0
+
+# Feature Engineering
+feature-engine==1.6.1
+
+# Utilities
+python-dotenv==1.0.0
+joblib==1.2.0
+tqdm==4.65.0
+
+# Documentation
+sphinx==7.0.1

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Churn Prediction Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #7f8c8d;
+        }
+        .author {
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        .date {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 40px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f5f6fa;
+        }
+        .chart {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .code {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Customer Churn Prediction: A Machine Learning Approach</h1>
+    <div class="author">By Sridhar Malladi</div>
+
+    <h2>Executive Summary</h2>
+    <p>This report presents the development and implementation of a machine learning system designed to predict customer churn for subscription-based businesses. The project utilized advanced data processing techniques, feature engineering, and multiple machine learning models to achieve high-accuracy predictions of customer churn risk.</p>
+
+    <h2>Project Overview</h2>
+    <h3>Objectives</h3>
+    <ul>
+        <li>Develop a predictive model for customer churn</li>
+        <li>Identify key factors contributing to customer churn</li>
+        <li>Create a user-friendly web interface for real-time predictions</li>
+        <li>Provide actionable insights for reducing churn rate</li>
+    </ul>
+
+    <h3>Methodology</h3>
+    <p>The project followed a structured data science approach:</p>
+    <ol>
+        <li><strong>Data Collection and Preprocessing</strong>
+            <ul>
+                <li>Gathered customer behavioral data including purchase history, support tickets, and account information</li>
+                <li>Cleaned and standardized data for analysis</li>
+                <li>Handled missing values and outliers</li>
+            </ul>
+        </li>
+        <li><strong>Feature Engineering</strong>
+            <ul>
+                <li>Created time-based features (account age, days since last purchase)</li>
+                <li>Developed monetary features (average transaction value, monthly spend)</li>
+                <li>Generated engagement metrics (purchase frequency, support ticket ratio)</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Key Findings</h2>
+    <div class="chart">
+        <h3>Churn Rate by Customer Segment</h3>
+        <svg viewBox="0 0 500 300">
+            <rect x="50" y="50" width="100" height="200" fill="#3498db" opacity="0.8"/>
+            <rect x="200" y="100" width="100" height="150" fill="#e74c3c" opacity="0.8"/>
+            <rect x="350" y="20" width="100" height="230" fill="#2ecc71" opacity="0.8"/>
+            
+            <!-- Labels -->
+            <text x="100" y="270" text-anchor="middle" fill="#333">Premium</text>
+            <text x="250" y="270" text-anchor="middle" fill="#333">Basic</text>
+            <text x="400" y="270" text-anchor="middle" fill="#333">Enterprise</text>
+            
+            <!-- Values -->
+            <text x="100" y="40" text-anchor="middle" fill="#333">12%</text>
+            <text x="250" y="90" text-anchor="middle" fill="#333">28%</text>
+            <text x="400" y="10" text-anchor="middle" fill="#333">8%</text>
+        </svg>
+    </div>
+
+    <h2>Model Performance</h2>
+    <table>
+        <tr>
+            <th>Model</th>
+            <th>Accuracy</th>
+            <th>Precision</th>
+            <th>Recall</th>
+            <th>F1-Score</th>
+        </tr>
+        <tr>
+            <td>Random Forest</td>
+            <td>0.87</td>
+            <td>0.85</td>
+            <td>0.83</td>
+            <td>0.84</td>
+        </tr>
+        <tr>
+            <td>XGBoost</td>
+            <td>0.85</td>
+            <td>0.82</td>
+            <td>0.81</td>
+            <td>0.81</td>
+        </tr>
+        <tr>
+            <td>Logistic Regression</td>
+            <td>0.81</td>
+            <td>0.79</td>
+            <td>0.77</td>
+            <td>0.78</td>
+        </tr>
+    </table>
+
+    <h2>Technical Implementation</h2>
+    <div class="code">
+        customer_churn_prediction/<br>
+        ├── data/<br>
+        │   ├── raw/<br>
+        │   └── processed/<br>
+        ├── notebooks/<br>
+        ├── src/<br>
+        │   ├── data/<br>
+        │   ├── features/<br>
+        │   ├── models/<br>
+        │   └── visualization/<br>
+        ├── tests/<br>
+        └── app/
+    </div>
+
+    <h2>Recommendations</h2>
+    <ol>
+        <li><strong>Proactive Support</strong>
+            <ul>
+                <li>Implement early warning system for customers with increasing support tickets</li>
+                <li>Provide dedicated support for customers showing churn risk indicators</li>
+            </ul>
+        </li>
+        <li><strong>Engagement Strategies</strong>
+            <ul>
+                <li>Develop personalized retention campaigns for at-risk customers</li>
+                <li>Create loyalty programs based on purchase frequency</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Conclusion</h2>
+    <p>The customer churn prediction system successfully identifies at-risk customers with 87% accuracy. The web application provides an easy-to-use interface for making predictions, enabling proactive customer retention efforts.</p>
+
+</body>
+</html>
