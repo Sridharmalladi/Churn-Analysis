@@ -130,7 +130,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Flask documentation
 - XGBoost documentation
 
-## Contact 📧
-Your Name - [your.email@example.com](mailto:your.email@example.com)
-
-Project Link: [https://github.com/yourusername/customer_churn_prediction](https://github.com/yourusername/customer_churn_prediction)
